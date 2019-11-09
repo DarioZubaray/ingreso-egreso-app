@@ -5,7 +5,7 @@ import { IngresoEgresoService } from './ingreso-egreso.service';
 
 import Swal from 'sweetalert2';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducers';
+import * as fromIngresoEgreso from './ingreso-egreso.reducer';
 import { Subscription } from 'rxjs';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
 
@@ -21,7 +21,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
   cargandoSubs: Subscription = new Subscription();
   cargando: boolean;
 
-  constructor(public ingresoEgresoService: IngresoEgresoService, private store: Store<AppState>) { }
+  constructor(public ingresoEgresoService: IngresoEgresoService, private store: Store<fromIngresoEgreso.AppState>) { }
 
   ngOnInit() {
     this.cargandoSubs = this.store.select('ui').subscribe(ui => {
