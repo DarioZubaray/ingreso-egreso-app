@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 import { ChartsModule } from 'ng2-charts';
 
 import { AngularFireModule } from '@angular/fire';
@@ -25,7 +27,6 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { OrderIngresoEgresoPipe } from './ingreso-egreso/order-ingreso-egreso.pipe';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,15 @@ import { AuthModule } from './auth/auth.module';
     IngresoEgresoComponent,
     EstadisticaComponent,
     DetalleComponent,
-    NavbarComponent,
-    FooterComponent,
-    SidebarComponent,
+    // NavbarComponent,
+    // FooterComponent,
+    // SidebarComponent,
     OrderIngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
+    AuthModule,
+    SharedModule,
     // FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -54,8 +57,7 @@ import { AuthModule } from './auth/auth.module';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    ChartsModule,
-    AuthModule
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
