@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducers';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnsetUserAction } from './auth.actions';
 import { Subscription } from 'rxjs';
 
 @Injectable({
@@ -86,6 +86,8 @@ export class AuthService {
   }
 
   logout() {
+    this.store.dispatch(new UnsetUserAction());
+
     this.router.navigate(['/login']);
 
     this.afAuth.auth.signOut();
