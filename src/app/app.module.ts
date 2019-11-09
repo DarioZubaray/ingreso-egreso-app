@@ -25,12 +25,13 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { OrderIngresoEgresoPipe } from './ingreso-egreso/order-ingreso-egreso.pipe';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    // LoginComponent,
+    // RegisterComponent,
     DashboardComponent,
     IngresoEgresoComponent,
     EstadisticaComponent,
@@ -42,18 +43,19 @@ import { OrderIngresoEgresoPipe } from './ingreso-egreso/order-ingreso-egreso.pi
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    // FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule,
+    // AngularFireAuthModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    ChartsModule
+    ChartsModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
